@@ -1,0 +1,7 @@
+// EntityFramework.Tools paketi sayesinde Package Manager Console içinde çaðýrýlabilir
+Add-Migration Initial -Context MuzayedeContext -Project Vektorel.Muzayede.Data -StartupProject Vektorel.Muzayede.Api
+
+Komut çalýþýrken kodumuzda olan MigrationFactory class'ýnýn kullandýðý IDesignTimeDbContextFactory interface'inin kullanýlacaðý EntityFramework.Design paketi kullanýlmalýdýr.
+-----------------
+//Yapýlan deðiþikliklerin database'e uygulanmasý
+Update-Database -Context MuzayedeContext -Project Vektorel.Muzayede.Data -StartupProject Vektorel.Muzayede.Api
