@@ -14,6 +14,7 @@ public class MuzayedeContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Board> Boards { get; set; }
     public DbSet<BoardProduct> BoardProducts { get; set; }
+    public DbSet<Proposal> Proposals { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductPrice> ProductPrices { get; set; }
     public DbSet<Wallet> Wallets { get; set; }
