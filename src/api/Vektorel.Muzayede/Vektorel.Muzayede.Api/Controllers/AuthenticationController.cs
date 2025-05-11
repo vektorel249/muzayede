@@ -30,3 +30,30 @@ public class AuthenticationController : ControllerBase
         return Ok("deðiþtirildi");
     }
 }
+
+
+[ApiController]
+[Route("controller")]
+public class ProposalsController : ControllerBase
+{
+    private readonly IMediator mediator;
+
+    public ProposalsController(IMediator mediator)
+    {
+        this.mediator = mediator;
+    }
+
+    [HttpGet("my")]
+    public async Task<IActionResult> GetMyProposals()
+    {
+        await Task.CompletedTask;
+        return Ok();
+    }
+
+    [HttpPost("make")]
+    public async Task<IActionResult> MakeProposal()
+    {
+        await Task.CompletedTask;
+        return Ok();
+    }
+}
