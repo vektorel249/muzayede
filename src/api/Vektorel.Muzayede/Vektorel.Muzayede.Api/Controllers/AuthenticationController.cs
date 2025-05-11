@@ -6,7 +6,7 @@ using Vektorel.Muzayede.Modules.Users.Queries;
 namespace Vektorel.Muzayede.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class AuthenticationController : ControllerBase
 {
     private readonly IMediator mediator;

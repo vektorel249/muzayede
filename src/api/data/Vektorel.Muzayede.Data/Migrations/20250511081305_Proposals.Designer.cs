@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vektorel.Muzayede.Data;
 
@@ -11,9 +12,11 @@ using Vektorel.Muzayede.Data;
 namespace Vektorel.Muzayede.Data.Migrations
 {
     [DbContext(typeof(MuzayedeContext))]
-    partial class MuzayedeContextModelSnapshot : ModelSnapshot
+    [Migration("20250511081305_Proposals")]
+    partial class Proposals
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Api", "Vektorel.Muzayede.Api\Vektorel.Muzayede.Api.csproj", "{96C640DA-C678-45CA-A68A-1C13A4FA13DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Api", "Vektorel.Muzayede.Api\Vektorel.Muzayede.Api.csproj", "{96C640DA-C678-45CA-A68A-1C13A4FA13DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{6A4AC6A3-60B9-4144-AE78-F6A2682546A9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "admin", "admin", "{1DE21B10-9866-4521-8492-B7ED30CD1B0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Admin", "..\..\admin\Vektorel.Muzayede.Admin\Vektorel.Muzayede.Admin.csproj", "{ACDA0B2A-F569-44F5-8641-09BF9B526D52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Admin", "..\..\admin\Vektorel.Muzayede.Admin\Vektorel.Muzayede.Admin.csproj", "{ACDA0B2A-F569-44F5-8641-09BF9B526D52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{FCCE2A33-7903-4749-A9B4-5B7905BFDCE0}"
 EndProject
@@ -17,28 +17,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{3628
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{5D82F29B-15B9-4315-90EA-1106679F7FB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Data", "..\data\Vektorel.Muzayede.Data\Vektorel.Muzayede.Data.csproj", "{852FD798-7418-4470-922F-4F01AE9B1C13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Data", "..\data\Vektorel.Muzayede.Data\Vektorel.Muzayede.Data.csproj", "{852FD798-7418-4470-922F-4F01AE9B1C13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Entities", "..\data\Vektorel.Muzayede.Entities\Vektorel.Muzayede.Entities.csproj", "{0096F9FD-ECFB-4412-ABB6-4DCDC8E37079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Entities", "..\data\Vektorel.Muzayede.Entities\Vektorel.Muzayede.Entities.csproj", "{0096F9FD-ECFB-4412-ABB6-4DCDC8E37079}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Common", "Vektorel.Muzayede.Common\Vektorel.Muzayede.Common.csproj", "{D8BDD1E5-1947-43D0-B7BC-DB30C8A16304}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Common", "Vektorel.Muzayede.Common\Vektorel.Muzayede.Common.csproj", "{D8BDD1E5-1947-43D0-B7BC-DB30C8A16304}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.QueueService", "..\services\Vektorel.Muzayede.QueueService\Vektorel.Muzayede.QueueService.csproj", "{3470A9BA-656F-47A2-804B-C06B153C6978}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.QueueService", "..\services\Vektorel.Muzayede.QueueService\Vektorel.Muzayede.QueueService.csproj", "{3470A9BA-656F-47A2-804B-C06B153C6978}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.DistributedCache", "..\services\Vektorel.Muzayede.DistributedCache\Vektorel.Muzayede.DistributedCache.csproj", "{6291C817-41E4-4E35-BDF0-E9D3B49B060F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.DistributedCache", "..\services\Vektorel.Muzayede.DistributedCache\Vektorel.Muzayede.DistributedCache.csproj", "{6291C817-41E4-4E35-BDF0-E9D3B49B060F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Modules.Users", "..\modules\Vektorel.Muzayede.Modules.Users\Vektorel.Muzayede.Modules.Users.csproj", "{04361873-35BD-4B63-8256-ED2E58D95D0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Modules.Users", "..\modules\Vektorel.Muzayede.Modules.Users\Vektorel.Muzayede.Modules.Users.csproj", "{04361873-35BD-4B63-8256-ED2E58D95D0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Modules.Payments", "..\modules\Vektorel.Muzayede.Modules.Payments\Vektorel.Muzayede.Modules.Payments.csproj", "{2C070A69-4164-4E24-B6AA-1BE7D8020468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Modules.Payments", "..\modules\Vektorel.Muzayede.Modules.Payments\Vektorel.Muzayede.Modules.Payments.csproj", "{2C070A69-4164-4E24-B6AA-1BE7D8020468}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F9F9413E-3865-4172-AA21-0FFA53C8C3DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Tests", "..\..\test\Vektorel.Muzayede.Tests\Vektorel.Muzayede.Tests.csproj", "{18413A24-AFCD-4771-8EA2-B0707D43E60C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Tests", "..\..\test\Vektorel.Muzayede.Tests\Vektorel.Muzayede.Tests.csproj", "{18413A24-AFCD-4771-8EA2-B0707D43E60C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E69571A4-5C0D-4188-A394-20C2A4C1CDF6}"
 	ProjectSection(SolutionItems) = preProject
 		Migration.txt = Migration.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Modules.Domain", "..\modules\Vektorel.Muzayede.Modules.Domain\Vektorel.Muzayede.Modules.Domain.csproj", "{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +88,10 @@ Global
 		{18413A24-AFCD-4771-8EA2-B0707D43E60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18413A24-AFCD-4771-8EA2-B0707D43E60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18413A24-AFCD-4771-8EA2-B0707D43E60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{04361873-35BD-4B63-8256-ED2E58D95D0C} = {3628DB6E-9992-4C15-A1AC-9241F43EE600}
 		{2C070A69-4164-4E24-B6AA-1BE7D8020468} = {3628DB6E-9992-4C15-A1AC-9241F43EE600}
 		{18413A24-AFCD-4771-8EA2-B0707D43E60C} = {F9F9413E-3865-4172-AA21-0FFA53C8C3DC}
+		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC} = {3628DB6E-9992-4C15-A1AC-9241F43EE600}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B16C324-6ECF-4589-AAF4-10535F3C4FC4}
