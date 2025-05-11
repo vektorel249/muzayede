@@ -20,6 +20,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\data\Vektorel.Muzayede.Data\Vektorel.Muzayede.Data.csproj" />
+		<ProjectReference Include="..\..\modules\Vektorel.Muzayede.Modules.Domain\Vektorel.Muzayede.Modules.Domain.csproj" />
 		<ProjectReference Include="..\..\modules\Vektorel.Muzayede.Modules.Users\Vektorel.Muzayede.Modules.Users.csproj" />
 	</ItemGroup>
 

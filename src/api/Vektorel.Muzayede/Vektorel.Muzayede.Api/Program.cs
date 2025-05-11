@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Vektorel.Muzayede.Common.Options;
 using Vektorel.Muzayede.Data.Extensions;
+using Vektorel.Muzayede.Modules.Domain;
 using Vektorel.Muzayede.Modules.Users;
 
 namespace Vektorel.Muzayede.Api;
@@ -23,6 +24,7 @@ public class Program
         builder.Services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(UserModuleAssemblyMarker.GetAssembly());
+            config.RegisterServicesFromAssembly(DomainModuleAssemblyMarker.GetAssembly());
 
             // tüm projeleri tarayacaðý için yavaþlar uzun vadede
             //config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());

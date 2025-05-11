@@ -6,7 +6,7 @@ using Vektorel.Muzayede.Modules.Users.Queries;
 namespace Vektorel.Muzayede.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class AuthenticationController : ControllerBase
 {
     private readonly IMediator mediator;
@@ -28,32 +28,5 @@ public class AuthenticationController : ControllerBase
     {
         await Task.CompletedTask;
         return Ok("deðiþtirildi");
-    }
-}
-
-
-[ApiController]
-[Route("controller")]
-public class ProposalsController : ControllerBase
-{
-    private readonly IMediator mediator;
-
-    public ProposalsController(IMediator mediator)
-    {
-        this.mediator = mediator;
-    }
-
-    [HttpGet("my")]
-    public async Task<IActionResult> GetMyProposals()
-    {
-        await Task.CompletedTask;
-        return Ok();
-    }
-
-    [HttpPost("make")]
-    public async Task<IActionResult> MakeProposal()
-    {
-        await Task.CompletedTask;
-        return Ok();
     }
 }
