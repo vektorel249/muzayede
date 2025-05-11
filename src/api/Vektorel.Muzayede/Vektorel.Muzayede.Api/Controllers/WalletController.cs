@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
+using Vektorel.Muzayede.Modules.Domain.Queries.Wallets;
 
 namespace Vektorel.Muzayede.Api.Controllers
 {
@@ -26,7 +27,7 @@ namespace Vektorel.Muzayede.Api.Controllers
         [HttpGet("balance")]
         public async Task<IActionResult> GetBalance(CancellationToken cancellationToken)
         {
-            var result = await mediator.Send(new GetWalletBalance(), cancellationToken);
+            var result = await mediator.Send(new GetWalletBalanceRequest(), cancellationToken);
             return Ok(result);
         }
 

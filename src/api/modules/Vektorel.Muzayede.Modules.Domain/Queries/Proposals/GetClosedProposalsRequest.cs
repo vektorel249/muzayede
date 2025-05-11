@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Vektorel.Muzayede.Common;
 using Vektorel.Muzayede.Data;
+using Vektorel.Muzayede.Modules.Domain.Queries.Dtos.Proposals;
 
-namespace Vektorel.Muzayede.Modules.Domain.Queries;
+namespace Vektorel.Muzayede.Modules.Domain.Queries.Proposals;
 
 public class GetClosedProposalsRequest : IRequest<Result<GetProposalsResult>>
 {

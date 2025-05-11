@@ -1,10 +1,13 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Vektorel.Muzayede.Modules.Domain.Queries.Products;
 
 namespace Vektorel.Muzayede.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
+[Authorize]
 public class ProductsController : ControllerBase
 {
     private readonly IMediator mediator;
@@ -14,8 +17,10 @@ public class ProductsController : ControllerBase
         this.mediator = mediator;
     }
 
-    public async Task<IActionResult> GetProducts()
+    [HttpGet("all")]
+    public async Task<IActionResult> GetProducts([FromQuery]int page, [FromQuery]int count, CancellationToken cancellationToken)
     {
-        return Ok("ürün listesi boş");
+        var result = await mediator.Send(new GetPagedProductsRequest(page, count), cancellationToken);
+        return Ok(result);
     }
 }

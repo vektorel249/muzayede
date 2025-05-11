@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Vektorel.Muzayede.Modules.Domain.Commands;
-using Vektorel.Muzayede.Modules.Domain.Queries;
+using Vektorel.Muzayede.Modules.Domain.Queries.Proposals;
 
 namespace Vektorel.Muzayede.Api.Controllers;
 
