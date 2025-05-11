@@ -1,4 +1,4 @@
-﻿namespace Vektorel.Muzayede.Modules.Domain.Queries;
+﻿namespace Vektorel.Muzayede.Modules.Domain.Queries.Dtos.Proposals;
 
 public class ProposalDto
 {

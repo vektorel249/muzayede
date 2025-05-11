@@ -33,14 +33,14 @@ namespace Vektorel.Muzayede.Data.Migrations
                         principalSchema: "Definition",
                         principalTable: "BoardProducts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Proposals_Users_UserId",
                         column: x => x.UserId,
                         principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

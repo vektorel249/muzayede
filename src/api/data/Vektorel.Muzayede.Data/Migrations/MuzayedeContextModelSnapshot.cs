@@ -327,13 +327,13 @@ namespace Vektorel.Muzayede.Data.Migrations
                     b.HasOne("Vektorel.Muzayede.Entities.Definition.BoardProduct", "BoardProduct")
                         .WithMany()
                         .HasForeignKey("BoardProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Vektorel.Muzayede.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("BoardProduct");
