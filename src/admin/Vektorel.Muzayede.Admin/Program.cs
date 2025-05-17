@@ -1,3 +1,5 @@
+using Vektorel.Muzayede.Admin.Helpers;
+
 namespace Vektorel.Muzayede.Admin
 {
     public class Program
@@ -8,6 +10,7 @@ namespace Vektorel.Muzayede.Admin
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddHttpClient<MuzayedeApiClient>();
 
             var app = builder.Build();
 
