@@ -59,7 +59,7 @@ internal class SignInQuery : IRequestHandler<SignInRequest, Result<SignInResult>
         {
             return Result<SignInResult>.Fail("Hesabınız askıya alındı");
         }
-        var (Token, ExpiresAt) = JwtHelper.GenerateToken(user.Id, user.Mail, user.UserType, options);
+        var (Token, ExpiresAt) = AuthenticationHelper.GenerateToken(user.Id, user.Mail, user.UserType, options);
         var result = new SignInResult(Token, ExpiresAt);
         return Result<SignInResult>.Success(result);
     }
