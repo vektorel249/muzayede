@@ -7,7 +7,7 @@ namespace Vektorel.Muzayede.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+//[Authorize]
 public class ProductsController : ControllerBase
 {
     private readonly IMediator mediator;
@@ -21,6 +21,15 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> GetProducts([FromQuery]int page, [FromQuery]int count, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(new GetPagedProductsRequest(page, count), cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpGet("get-selected")]
+    public async Task<IActionResult> GetSelectedProduct([FromQuery] string id, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(new GetSelectedProductRequest(id), cancellationToken);
+
+
         return Ok(result);
     }
 }
