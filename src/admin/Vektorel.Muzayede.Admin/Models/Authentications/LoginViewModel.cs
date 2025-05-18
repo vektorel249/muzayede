@@ -13,4 +13,6 @@ public class LoginResult
 {
     public string Token { get; set; }
     public DateTime ExpiresAt { get; set; }
+    public Guid Id { get; set; }
+    public string DisplayName { get; set; }
 }

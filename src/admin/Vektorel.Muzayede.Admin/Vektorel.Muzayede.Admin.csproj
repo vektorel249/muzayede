@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\api\services\Vektorel.Muzayede.DistributedCache\Vektorel.Muzayede.DistributedCache.csproj" />
     <ProjectReference Include="..\..\api\Vektorel.Muzayede\Vektorel.Muzayede.Common\Vektorel.Muzayede.Common.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,6 @@
 using Vektorel.Muzayede.Admin.Helpers;
+using Vektorel.Muzayede.Common.Options;
+using Vektorel.Muzayede.DistributedCache.Extensions;
 
 namespace Vektorel.Muzayede.Admin
 {
@@ -8,9 +10,13 @@ namespace Vektorel.Muzayede.Admin
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.Configure<RedisOptions>(builder.Configuration.GetSection(nameof(RedisOptions)));
+            var redisOptions = builder.Configuration.GetSection(nameof(RedisOptions)).Get<RedisOptions>();
+
             builder.Services.AddControllersWithViews();
             builder.Services.AddHttpClient<MuzayedeApiClient>();
+            builder.Services.AddScoped<UserAgentInfo>();
+            builder.Services.AddRedis(redisOptions);
 
             var app = builder.Build();
 
@@ -26,8 +32,9 @@ namespace Vektorel.Muzayede.Admin
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseMiddleware<UserAgentMiddleware>();
+            app.UseMiddleware<TokenCheckMiddleware>();
 
             app.MapControllerRoute(
                 name: "default",

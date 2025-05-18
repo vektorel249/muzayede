@@ -10,7 +10,7 @@ using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Entities.Identity;
 
 namespace Vektorel.Muzayede.Modules.Users.Queries;
-public record SignInResult(string Token, DateTime ExpiresAt);
+public record SignInResult(string Token, DateTime ExpiresAt, string Id, string DisplayName);
 
 public class SignInRequest : IRequest<Result<SignInResult>>
 {
@@ -69,7 +69,7 @@ internal class SignInQuery : IRequestHandler<SignInRequest, Result<SignInResult>
         }
 
         var (Token, ExpiresAt) = AuthenticationHelper.GenerateToken(user.Id, user.Email, user.UserType, options);
-        var result = new SignInResult(Token, ExpiresAt);
+        var result = new SignInResult(Token, ExpiresAt, user.Id, user.DisplayName);
         return Result<SignInResult>.Success(result);
     }
 
