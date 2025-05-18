@@ -14,15 +14,15 @@ public class MuzayedeApiClient
         this.client.BaseAddress = new Uri("https://localhost:7088");
     }
 
-    public async Task<bool> Post<T>(string url, T model, CancellationToken cancellationToken)
+    public async Task<R> Post<T, R>(string url, T model, CancellationToken cancellationToken)
     {
         var body = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
         var response = await client.PostAsync(url, body, cancellationToken);
         if (!response.IsSuccessStatusCode)
         {
-            return false;
+            return default(R);
         }
-        var content = response.Content.ReadAsStringAsync(cancellationToken);
-        return true;
+        var content = await response.Content.ReadAsStringAsync(cancellationToken);
+        return JsonSerializer.Deserialize<R>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true});
     }
 }

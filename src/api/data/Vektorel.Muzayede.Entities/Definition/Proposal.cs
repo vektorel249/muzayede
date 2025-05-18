@@ -7,7 +7,7 @@ namespace Vektorel.Muzayede.Entities.Definition;
 public class Proposal : EntityBase
 {
     public Guid BoardProductId { get; set; }
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
     public decimal Amount { get; set; }
 
     [ForeignKey(nameof(UserId))]

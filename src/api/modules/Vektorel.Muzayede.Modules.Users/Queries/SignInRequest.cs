@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.ComponentModel.DataAnnotations;
@@ -6,6 +7,7 @@ using Vektorel.Muzayede.Common;
 using Vektorel.Muzayede.Common.Helpers;
 using Vektorel.Muzayede.Common.Options;
 using Vektorel.Muzayede.Data;
+using Vektorel.Muzayede.Entities.Identity;
 
 namespace Vektorel.Muzayede.Modules.Users.Queries;
 public record SignInResult(string Token, DateTime ExpiresAt);
@@ -21,11 +23,13 @@ public class SignInRequest : IRequest<Result<SignInResult>>
 internal class SignInQuery : IRequestHandler<SignInRequest, Result<SignInResult>>
 {
     private readonly MuzayedeContext context;
+    private readonly UserManager<User> userManager;
     private readonly JwtOptions options;
 
-    public SignInQuery(MuzayedeContext context, IOptions<JwtOptions> options)
+    public SignInQuery(MuzayedeContext context, UserManager<User> userManager, IOptions<JwtOptions> options)
     {
         this.context = context;
+        this.userManager = userManager;
         this.options = options.Value;
     }
 
@@ -46,20 +50,25 @@ internal class SignInQuery : IRequestHandler<SignInRequest, Result<SignInResult>
         //var a = Activator.CreateInstance<A>(); 
         #endregion
 
-        var user = await context.Users.FirstOrDefaultAsync(f => f.Mail == request.Mail &&
-                                                                f.Password == request.Password,
-                                                           cancellationToken);
-
+        var user = await userManager.FindByEmailAsync(request.Mail.ToLower());
         if (user is null)
         {
             return Result<SignInResult>.Fail("Kullanıcı Bulunamadı");
         }
 
-        if (!user.IsActive)
+        if (!user.EmailConfirmed)
         {
-            return Result<SignInResult>.Fail("Hesabınız askıya alındı");
+            return Result<SignInResult>.Fail("Hesabınız henüz onaylanmadı");
         }
-        var (Token, ExpiresAt) = AuthenticationHelper.GenerateToken(user.Id, user.Mail, user.UserType, options);
+
+        var accessed = await userManager.CheckPasswordAsync(user, request.Password);
+
+        if (!accessed)
+        {
+            return Result<SignInResult>.Fail("Kullanıcı Bulunamadı");
+        }
+
+        var (Token, ExpiresAt) = AuthenticationHelper.GenerateToken(user.Id, user.Email, user.UserType, options);
         var result = new SignInResult(Token, ExpiresAt);
         return Result<SignInResult>.Success(result);
     }

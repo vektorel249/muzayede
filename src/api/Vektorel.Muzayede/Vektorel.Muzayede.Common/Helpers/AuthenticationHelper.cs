@@ -10,7 +10,7 @@ namespace Vektorel.Muzayede.Common.Helpers;
 
 public class AuthenticationHelper
 {
-    public static (string Token, DateTime ExpiresAt) GenerateToken(Guid id, string mail, UserType type, JwtOptions options)
+    public static (string Token, DateTime ExpiresAt) GenerateToken(string id, string mail, UserType type, JwtOptions options)
     {
         var expiresAt = DateTime.Now.AddMinutes(options.ExpireMinute);
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Secret));
@@ -20,7 +20,7 @@ public class AuthenticationHelper
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, id),
                 new Claim(ClaimTypes.Email, mail),
                 new Claim(ClaimTypes.GroupSid, type.GetHashCode().ToString())
             }),

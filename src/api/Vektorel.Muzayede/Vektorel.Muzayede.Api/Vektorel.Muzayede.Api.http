@@ -1,6 +1,0 @@
-@Vektorel.Muzayede.Api_HostAddress = http://localhost:5261
-
-GET {{Vektorel.Muzayede.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

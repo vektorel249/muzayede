@@ -9,7 +9,7 @@ public class Wallet : EntityBase
 {
     [MaxLength(16)]
     public string Label { get; set; }
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
     public decimal Balance { get; set; }
 
     [ForeignKey(nameof(UserId))]

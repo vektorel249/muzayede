@@ -14,7 +14,7 @@ public class Product : EntityBase
     public string Description { get; set; }
     [Required]
     public decimal CurrentPrice { get; set; }
-    public Guid OwnerId { get; set; }
+    public string OwnerId { get; set; }
 
     [ForeignKey(nameof(OwnerId))]
     public User Owner { get; set; }

@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Vektorel.Muzayede.Common.Options;
+using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Data.Extensions;
+using Vektorel.Muzayede.Entities.Identity;
 using Vektorel.Muzayede.Modules.Domain;
 using Vektorel.Muzayede.Modules.Users;
 
@@ -48,6 +51,8 @@ public class Program
                                RequireExpirationTime = true,
                             };
                         });
+
+        builder.Services.AddAuthorization();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

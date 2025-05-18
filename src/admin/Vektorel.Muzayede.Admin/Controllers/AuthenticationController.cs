@@ -17,6 +17,16 @@ public class AuthenticationController : Controller
         return View();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> SignInUser(LoginViewModel model, CancellationToken cancellationToken)
+    {
+        var result = await api.Post<LoginViewModel, ApiResult<LoginResult>>("api/authentication/sign-in", model, cancellationToken);
+
+        //Save token somewhere
+
+        return Redirect(nameof(SignIn));
+    }
+
     public IActionResult SignUp()
     {
         return View();
@@ -25,7 +35,7 @@ public class AuthenticationController : Controller
     [HttpPost]
     public async Task<IActionResult> SignUpUser(RegisterViewModel model, CancellationToken cancellationToken)
     {
-        var result = await api.Post("api/authentication/sign-up", model, cancellationToken);
-        return View();
+        var result = await api.Post<RegisterViewModel, bool>("api/authentication/sign-up", model, cancellationToken);
+        return Redirect(nameof(SignIn));
     }
 }

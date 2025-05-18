@@ -5,8 +5,7 @@
     "Run On Kestrel": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchBrowser": false,
       "applicationUrl": "https://localhost:7088;http://localhost:5261",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
