@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="60" viewBox="0 0 600 150">
+	<circle cx="60" cy="70" r="20" fill="#17a2b8" />
+	<rect x="56" y="50" width="8" height="60" fill="#17a2b8" rx="4" />
+	<path d="M 56 50 L 72 30 L 88 50 L 56 50 Z" fill="#17a2b8" />
+	<text x="100" y="85" font-family="'Poppins', sans-serif" font-size="50" fill="#333" font-weight="600" letter-spacing="3">Müzayede</text>
+</svg>
