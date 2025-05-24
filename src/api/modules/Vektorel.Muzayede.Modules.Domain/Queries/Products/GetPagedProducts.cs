@@ -6,7 +6,7 @@ using Vektorel.Muzayede.Modules.Domain.Queries.Dtos.Products;
 
 namespace Vektorel.Muzayede.Modules.Domain.Queries.Products;
 
-public class GetPagedProductsRequest : IRequest<Result<GetPagedProducts>>
+public class GetPagedProductsRequest : IRequest<Result<List<ProductDto>>>
 {
     public GetPagedProductsRequest(int page, int count)
     {
@@ -19,7 +19,7 @@ public class GetPagedProductsRequest : IRequest<Result<GetPagedProducts>>
 }
 
 
-internal class GetPagedProductsQuery : IRequestHandler<GetPagedProductsRequest, Result<GetPagedProducts>>
+internal class GetPagedProductsQuery : IRequestHandler<GetPagedProductsRequest, Result<List<ProductDto>>>
 {
     private readonly MuzayedeContext context;
 
@@ -27,11 +27,11 @@ internal class GetPagedProductsQuery : IRequestHandler<GetPagedProductsRequest, 
     {
         this.context = context;
     }
-    public async Task<Result<GetPagedProducts>> Handle(GetPagedProductsRequest request, CancellationToken cancellationToken)
+    public async Task<Result<List<ProductDto>>> Handle(GetPagedProductsRequest request, CancellationToken cancellationToken)
     {
         if (request.Count <= 0 || request.Page <= 0)
         {
-            return Result<GetPagedProducts>.Fail("parametre hatası");
+            return Result<List<ProductDto>>.Fail("parametre hatası");
         }
         var products = await context.Products.Where(f => f.IsActive)
                                              .Skip((request.Page - 1) * request.Count)
@@ -40,8 +40,10 @@ internal class GetPagedProductsQuery : IRequestHandler<GetPagedProductsRequest, 
                                              {
                                                  Id = s.Id,
                                                  Name = s.Name,
+                                                 Price = s.CurrentPrice,
+                                                 CreatedAt = s.CreatedAt,
                                              })
                                              .ToListAsync(cancellationToken);
-        return Result<GetPagedProducts>.Success(new GetPagedProducts(products));
+        return Result<List<ProductDto>>.Success(products);
     }
 }

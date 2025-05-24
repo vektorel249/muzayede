@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Vektorel.Muzayede.Modules.Domain.Commands.Products;
 using Vektorel.Muzayede.Modules.Domain.Queries.Products;
 
 namespace Vektorel.Muzayede.Api.Controllers;
@@ -28,8 +29,13 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> GetSelectedProduct([FromQuery] Guid id, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(new GetSelectedProductRequest(id), cancellationToken);
+        return Ok(result);
+    }
 
-
+    [HttpPost("create")]
+    public async Task<IActionResult> Create([FromBody] CreateProductRequest request, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(request, cancellationToken);
         return Ok(result);
     }
 }

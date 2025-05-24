@@ -6,7 +6,6 @@ using Vektorel.Muzayede.Admin.Models.Authentications;
 using Vektorel.Muzayede.DistributedCache;
 
 namespace Vektorel.Muzayede.Admin.Controllers;
-
 public class AuthenticationController : Controller
 {
     private readonly MuzayedeApiClient api;
@@ -32,6 +31,10 @@ public class AuthenticationController : Controller
     {
         var result = await api.Post<LoginViewModel, ApiResult<LoginResult>>("api/authentication/sign-in", model, cancellationToken);
 
+        if (!result.Succeeded)
+        {
+            return BadRequest(result.Message);
+        }
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
@@ -59,7 +62,7 @@ public class AuthenticationController : Controller
     [AllowAnonymous]
     public async Task<IActionResult> SignUpUser(RegisterViewModel model, CancellationToken cancellationToken)
     {
-        var result = await api.Post<RegisterViewModel, bool>("api/authentication/sign-up", model, cancellationToken);
+        var result = await api.Post<RegisterViewModel, ApiResult<bool>>("api/authentication/sign-up", model, cancellationToken);
         return Redirect(nameof(SignIn));
     }
 

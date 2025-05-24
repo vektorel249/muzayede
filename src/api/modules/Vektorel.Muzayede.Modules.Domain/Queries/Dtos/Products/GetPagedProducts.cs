@@ -4,5 +4,6 @@ public class ProductDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public decimal Price { get; internal set; }
 }
-public record GetPagedProducts(List<ProductDto> products);

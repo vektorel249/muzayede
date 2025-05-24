@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Options;
 using Vektorel.Muzayede.Admin.Helpers;
 using Vektorel.Muzayede.Common.Options;
 using Vektorel.Muzayede.DistributedCache.Extensions;
@@ -17,6 +19,10 @@ namespace Vektorel.Muzayede.Admin
             builder.Services.AddHttpClient<MuzayedeApiClient>();
             builder.Services.AddScoped<UserAgentInfo>();
             builder.Services.AddRedis(redisOptions);
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "CustomCookie";
+            }).AddScheme<AuthenticationSchemeOptions, CustomCookieAuthenticationHandler>("CustomCookie", null);
 
             var app = builder.Build();
 
@@ -32,6 +38,7 @@ namespace Vektorel.Muzayede.Admin
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseMiddleware<UserAgentMiddleware>();
             app.UseMiddleware<TokenCheckMiddleware>();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using System.Net;
 using System.Text;
 using Vektorel.Muzayede.Common.Helpers;
@@ -19,6 +20,12 @@ public class TokenCheckMiddleware
     {
         var endpoint = httpContext.GetEndpoint();
 
+        if (endpoint is null)
+        {
+            await next(httpContext);
+            return;
+        }
+
         var allowedForAnoymous = endpoint.Metadata.GetMetadata<IAllowAnonymous>();
         if (allowedForAnoymous is not null)
         {
@@ -37,10 +44,10 @@ public class TokenCheckMiddleware
         var userAgentInfo = httpContext.RequestServices.GetRequiredService<UserAgentInfo>();
         var id = Encoding.UTF8.GetString(Convert.FromBase64String(idCookie));
         var key = userAgentInfo.GetKey(Guid.Parse(id));
-        var tokenExists = await redisService.GetStringAsync(key);
-        if (tokenExists is not null)
+        var token = await redisService.GetStringAsync(key);
+        if (token is not null)
         {
-            Console.WriteLine("Token Kontrol Edildi");
+            userAgentInfo.Token = token;
             await next(httpContext);
             return;
         }
@@ -54,6 +61,7 @@ public class UserAgentInfo
 {
     public string Ip { get; set; }
     public string UserAgent { get; set; }
+    public string Token { get; set; }
 
     public string GetKey(Guid userId)
     {
