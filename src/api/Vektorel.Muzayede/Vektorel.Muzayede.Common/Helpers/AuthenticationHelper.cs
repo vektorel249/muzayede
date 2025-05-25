@@ -47,3 +47,13 @@ public class AuthenticationHelper
         return builder.ToString();
     }
 }
+
+public class CurrentUserInfo
+{
+    public Guid? UserId { get; set; }
+    public string Mail { get; set; }
+    public UserType UserType { get; set; }
+    public bool IsAuthenticated { get; set; }
+
+    public string UserIdAsString => UserId.Value.ToString();
+}

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vektorel.Muzayede.Common;
+using Vektorel.Muzayede.Common.Helpers;
 using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Entities.Definition;
 
@@ -20,10 +21,12 @@ public class CreateProductRequest : IRequest<Result<bool>>
 internal class CreateProductCommand : IRequestHandler<CreateProductRequest, Result<bool>>
 {
     private readonly MuzayedeContext context;
+    private readonly CurrentUserInfo currentUser;
 
-    public CreateProductCommand(MuzayedeContext context)
+    public CreateProductCommand(MuzayedeContext context, CurrentUserInfo currentUser)
     {
         this.context = context;
+        this.currentUser = currentUser;
     }
     public async Task<Result<bool>> Handle(CreateProductRequest request, CancellationToken cancellationToken)
     {
@@ -32,7 +35,7 @@ internal class CreateProductCommand : IRequestHandler<CreateProductRequest, Resu
             Name = request.Name,
             CurrentPrice = request.Price,
             Description = request.Description,
-            OwnerId = "70f4cbb0-ac1d-4e86-888a-265b3ffad82d",
+            OwnerId = currentUser.UserId.Value.ToString(),
             IsActive = true
         };
 

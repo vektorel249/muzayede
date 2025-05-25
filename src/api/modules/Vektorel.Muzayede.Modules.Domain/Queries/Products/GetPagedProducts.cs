@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Vektorel.Muzayede.Common;
+using Vektorel.Muzayede.Common.Helpers;
 using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Modules.Domain.Queries.Dtos.Products;
 
@@ -22,10 +23,12 @@ public class GetPagedProductsRequest : IRequest<Result<List<ProductDto>>>
 internal class GetPagedProductsQuery : IRequestHandler<GetPagedProductsRequest, Result<List<ProductDto>>>
 {
     private readonly MuzayedeContext context;
+    private readonly CurrentUserInfo currentUserInfo;
 
-    public GetPagedProductsQuery(MuzayedeContext context)
+    public GetPagedProductsQuery(MuzayedeContext context, CurrentUserInfo currentUserInfo)
     {
         this.context = context;
+        this.currentUserInfo = currentUserInfo;
     }
     public async Task<Result<List<ProductDto>>> Handle(GetPagedProductsRequest request, CancellationToken cancellationToken)
     {
@@ -33,7 +36,7 @@ internal class GetPagedProductsQuery : IRequestHandler<GetPagedProductsRequest, 
         {
             return Result<List<ProductDto>>.Fail("parametre hatası");
         }
-        var products = await context.Products.Where(f => f.IsActive)
+        var products = await context.Products.Where(f => f.IsActive && f.OwnerId == currentUserInfo.UserIdAsString)
                                              .Skip((request.Page - 1) * request.Count)
                                              .Take(request.Count)
                                              .Select(s => new ProductDto

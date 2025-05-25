@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Vektorel.Muzayede.Api.Middlewares;
+using Vektorel.Muzayede.Common.Helpers;
 using Vektorel.Muzayede.Common.Options;
 using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Data.Extensions;
@@ -24,6 +26,7 @@ public class Program
 
         builder.Services.AddControllers();
         builder.Services.AddData(databaseOptions);
+        builder.Services.AddScoped<CurrentUserInfo>();
         builder.Services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(UserModuleAssemblyMarker.GetAssembly());
@@ -31,6 +34,23 @@ public class Program
 
             // tüm projeleri tarayacaðý için yavaþlar uzun vadede
             //config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+        });
+
+        builder.Services.AddCors(config =>
+        {
+            if (builder.Environment.IsDevelopment())
+            {
+                config.AddPolicy(builder.Environment.EnvironmentName, policyBuilder =>
+                {
+                    policyBuilder.AllowAnyHeader()
+                                 .AllowAnyMethod()
+                                 .AllowAnyOrigin();
+                });
+            }
+            else if (builder.Environment.IsProduction())
+            {
+                //BAÞKA CONFIG     (SADECE MUZAYEDE MÜÞTERÝ UYGULAMASINA ÝZÝN VER )
+            }
         });
 
         builder.Services.AddAuthentication(options =>
@@ -66,8 +86,10 @@ public class Program
         }
         
         app.UseHttpsRedirection();
+        app.UseCors(builder.Environment.EnvironmentName);
         app.UseAuthentication();
         app.UseAuthorization();
+        app.UseMiddleware<CurrentUserControlMiddleware>();
         app.MapControllers();
         app.Run();
     }

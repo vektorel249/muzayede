@@ -1,59 +1,27 @@
 <template>
-  <div class="page">
-    <header class="navbar navbar-expand-md d-print-none">
-      <div class="container-xl">
-        <div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-          <a href="/">
-            <img src="/img/logo.svg" />
-          </a>
-        </div>
-        <div class="navbar-nav flex-row order-md-last">
-          <div class="d-none d-md-flex">
-            <div class="nav-item dropdown d-none d-md-flex">
-              <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications"
-                data-bs-auto-close="outside" aria-expanded="false">
-                <img src="/img/bell.svg" />
-                <span class="badge bg-red"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
-                <Notifications />
-              </div>
-            </div>
-          </div>
-          <User />
-        </div>
-      </div>
-    </header>
-
-    <div class="page-wrapper">
-      <div class="page-header d-print-none">
-        <div class="container-xl">
-          <div class="row g-2 align-items-center">
-            <div class="col">
-              <h2 class="page-title">Müzayede</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="page-body">
-        <div class="container-xl">
-          <Home />
-        </div>
-      </div>
-    </div>
-  </div>
+  <Anonymous v-if="needsLogin" />
+  <Authorized v-else />
 </template>
 
 <script>
-import Notifications from "./components/Notifications.vue";
-import User from "./components/User.vue";
-import Home from "./pages/Home/Home.vue"
+import Anonymous from "./Layouts/Anonymous.vue";
+import Authorized from "./layouts/Authorized.vue";
 export default {
   name: "App",
   components: {
-    Home,
-    User, 
-    Notifications
+    Authorized,
+    Anonymous
+  },
+  data() {
+    return {
+      needsLogin: false
+    }
+  },
+  beforeMount() {
+    let isLogin = window.location.pathname == "/login";
+    if (isLogin) {
+      this.needsLogin = true;
+    }
   }
 }
 </script>
