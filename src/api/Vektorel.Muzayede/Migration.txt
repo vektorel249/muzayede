@@ -5,3 +5,7 @@ Komut çalýþýrken kodumuzda olan MigrationFactory class'ýnýn kullandýðý IDesignTi
 -----------------
 //Yapýlan deðiþikliklerin database'e uygulanmasý
 Update-Database -Context MuzayedeContext -Project Vektorel.Muzayede.Data -StartupProject Vektorel.Muzayede.Api
+
+-----------------
+//Diskteki bak dosyasýnýn restore edilmesi için
+RESTORE DATABASE MuzayedeDb FROM DISK = N'C:\AutoDesk\MuzayedeDb.bak' WITH REPLACE

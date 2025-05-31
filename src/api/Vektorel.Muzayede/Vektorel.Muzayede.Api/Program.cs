@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Vektorel.Muzayede.Api.Middlewares;
 using Vektorel.Muzayede.Common.Helpers;
 using Vektorel.Muzayede.Common.Options;
-using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Data.Extensions;
-using Vektorel.Muzayede.Entities.Identity;
+using Vektorel.Muzayede.DistributedCache.Extensions;
 using Vektorel.Muzayede.Modules.Domain;
 using Vektorel.Muzayede.Modules.Users;
 
@@ -23,9 +21,11 @@ public class Program
         builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
         var databaseOptions = builder.Configuration.GetSection(nameof(DatabaseOptions)).Get<DatabaseOptions>();
         var jwtOptions = builder.Configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>();
+        var redisOptions = builder.Configuration.GetSection(nameof(RedisOptions)).Get<RedisOptions>();
 
         builder.Services.AddControllers();
         builder.Services.AddData(databaseOptions);
+        builder.Services.AddRedis(redisOptions);
         builder.Services.AddScoped<CurrentUserInfo>();
         builder.Services.AddMediatR(config =>
         {

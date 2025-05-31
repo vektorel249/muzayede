@@ -40,7 +40,7 @@
       </div>
       <div class="page-body">
         <div class="container-xl">
-          <Home />
+          <router-view />
         </div>
       </div>
     </div>
@@ -49,11 +49,9 @@
 <script>
 import Notifications from "../components/Notifications.vue";
 import User from "../components/User.vue";
-import Home from "../pages/Home/Home.vue"
 export default {
   name: "Authorized",
   components: {
-    Home,
     User, 
     Notifications
   },

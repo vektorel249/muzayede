@@ -22,7 +22,4 @@ export default {
         HomeCard
     }
 }
-
-//Reusable Components: 
 </script>
-

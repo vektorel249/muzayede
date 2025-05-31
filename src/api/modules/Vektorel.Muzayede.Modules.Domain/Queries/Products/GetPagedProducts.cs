@@ -6,7 +6,6 @@ using Vektorel.Muzayede.Data;
 using Vektorel.Muzayede.Modules.Domain.Queries.Dtos.Products;
 
 namespace Vektorel.Muzayede.Modules.Domain.Queries.Products;
-
 public class GetPagedProductsRequest : IRequest<Result<List<ProductDto>>>
 {
     public GetPagedProductsRequest(int page, int count)

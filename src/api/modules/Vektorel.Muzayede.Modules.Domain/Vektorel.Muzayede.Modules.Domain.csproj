@@ -12,5 +12,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\data\Vektorel.Muzayede.Data\Vektorel.Muzayede.Data.csproj" />
+		<ProjectReference Include="..\..\services\Vektorel.Muzayede.DistributedCache\Vektorel.Muzayede.DistributedCache.csproj" />
 	</ItemGroup>
 </Project>

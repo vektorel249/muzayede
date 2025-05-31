@@ -1,26 +1,31 @@
 <template>
-  <Anonymous v-if="needsLogin" />
-  <Authorized v-else />
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
 <script>
-import Anonymous from "./Layouts/Anonymous.vue";
-import Authorized from "./layouts/Authorized.vue";
+import Authorized from './layouts/Authorized.vue';
+import Anonymous from './layouts/Anonymous.vue';
 export default {
   name: "App",
   components: {
     Authorized,
     Anonymous
   },
-  data() {
-    return {
-      needsLogin: false
-    }
-  },
-  beforeMount() {
-    let isLogin = window.location.pathname == "/login";
-    if (isLogin) {
-      this.needsLogin = true;
+  computed: {
+    layout(){
+      const layout = this.$route.meta.layout;
+      if (!layout) {
+        return null;
+      }
+      if (layout == "main") {
+        return Authorized;  
+      }
+      else if (layout == "anon") {
+        return Anonymous;
+      }
+      return null;
     }
   }
 }
