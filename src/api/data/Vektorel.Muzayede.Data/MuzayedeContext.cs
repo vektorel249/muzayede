@@ -15,6 +15,7 @@ public class MuzayedeContext : IdentityDbContext<User>
     public DbSet<Board> Boards { get; set; }
     public DbSet<BoardProduct> BoardProducts { get; set; }
     public DbSet<Proposal> Proposals { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductPrice> ProductPrices { get; set; }
     public DbSet<Wallet> Wallets { get; set; }

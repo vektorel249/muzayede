@@ -9,3 +9,7 @@ Update-Database -Context MuzayedeContext -Project Vektorel.Muzayede.Data -Startu
 -----------------
 //Diskteki bak dosyasýnýn restore edilmesi için
 RESTORE DATABASE MuzayedeDb FROM DISK = N'C:\AutoDesk\MuzayedeDb.bak' WITH REPLACE
+
+-----------------
+Redis için script
+docker run --name va-redis -p 19000:6379 -d redis

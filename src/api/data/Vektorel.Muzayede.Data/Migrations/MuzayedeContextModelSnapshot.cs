@@ -216,6 +216,40 @@ namespace Vektorel.Muzayede.Data.Migrations
                     b.ToTable("BoardProducts", "Definition");
                 });
 
+            modelBuilder.Entity("Vektorel.Muzayede.Entities.Definition.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments", "Definition");
+                });
+
             modelBuilder.Entity("Vektorel.Muzayede.Entities.Definition.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -514,6 +548,23 @@ namespace Vektorel.Muzayede.Data.Migrations
                     b.Navigation("Board");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Vektorel.Muzayede.Entities.Definition.Comment", b =>
+                {
+                    b.HasOne("Vektorel.Muzayede.Entities.Definition.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Vektorel.Muzayede.Entities.Identity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Vektorel.Muzayede.Entities.Definition.Product", b =>

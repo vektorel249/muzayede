@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Vektorel.Muzayede.Admin.Helpers;
 using Vektorel.Muzayede.Admin.Models.Products;
+using Vektorel.Muzayede.Common.Dtos;
 
 namespace Vektorel.Muzayede.Admin.Controllers;
 
@@ -44,8 +45,36 @@ public class ProductController : Controller
         return View(model);
     }
 
-    public IActionResult Edit(Guid id)
+    public async Task<IActionResult> Edit(Guid id, CancellationToken cancellationToken)
     {
-        return View();
+        var boards = await api.Get<ApiResult<List<OptionItem>>>("api/boards/options", cancellationToken);
+
+        //TODO: EV ÖDEVİ
+        var product = await api.Get<ProductViewModel>("api/products/detail/" + id, cancellationToken);
+        if (product == null)
+        {
+            return RedirectToAction("Index");
+        }
+
+        var model = new UpdateProductViewModel
+        {
+            Id = id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description
+        };
+        return View(model);
+    }
+
+    public async Task<IActionResult> UpdateProduct(UpdateProductViewModel model, CancellationToken cancellationToken)
+    {
+        var result = await api.Post<UpdateProductViewModel, ApiResult<bool>>("api/products/update", model, cancellationToken);
+        if (result.Succeeded)
+        {
+            return RedirectToAction("Index");
+        }
+
+        ViewBag.Message = result.Message;
+        return View(model);
     }
 }

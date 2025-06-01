@@ -21,4 +21,11 @@ public class ProductsController : ControllerBase
         var result = await mediator.Send(new GetLatestProductsRequest(), cancellationToken);
         return Ok(result);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetDetail([FromRoute] Guid id, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(new GetDetailedProductRequest(id), cancellationToken);
+        return Ok(result);
+    }
 }

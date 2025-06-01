@@ -1,0 +1,54 @@
+﻿@model UpdateProductViewModel;
+@{
+    ViewBag.Title = "Ürün Bilgilerini Değiştir";
+}
+
+<form action="@Url.Action("UpdateProduct", "Product")" method="post" class="card">
+    <div class="card-header">
+        <h4 class="card-title">Ürün Bilgileri</h4>
+    </div>
+    <div class="card-body">
+        <div class="row g-5">
+            <div class="col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="form-label">Ürün Adı</label>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Kol saati, telefon veya araba..." />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fiyatı</label>
+                            <input asp-for="Price" type="number" class="form-control" placeholder="Kol saati, telefon veya araba..." />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Açıklama</label>
+                            <textarea asp-for="Description" class="form-control" placeholder="severek kullandığım bu ürünü satıyorum..."></textarea>
+                        </div>
+
+                        <button class="btn btn-primary ms-auto" type="submit">Ekle</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+<hr />
+<form action="@Url.Action("UpdateProduct", "Product")" method="post" class="card">
+    <div class="card-header">
+        <h4 class="card-title">Ürün Bilgileri</h4>
+    </div>
+    <div class="card-body">
+        <div class="row g-5">
+            <div class="col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <partial name="PartialViews/BoardSelection.cshtml"></partial>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>

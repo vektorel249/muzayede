@@ -5,13 +5,16 @@
 </template>
 
 <script>
-import Authorized from './layouts/Authorized.vue';
+import MainLayout from './layouts/MainLayout.vue';
 import Anonymous from './layouts/Anonymous.vue';
 export default {
   name: "App",
   components: {
-    Authorized,
+    MainLayout,
     Anonymous
+  },
+  mounted() {
+    this.$moment.locale("tr");
   },
   computed: {
     layout(){
@@ -20,7 +23,7 @@ export default {
         return null;
       }
       if (layout == "main") {
-        return Authorized;  
+        return MainLayout;  
       }
       else if (layout == "anon") {
         return Anonymous;
