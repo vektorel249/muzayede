@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Contact Form";
+}
+<h2>İletişim Formu</h2>
+<form method="post" action="/Contact/Save">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Ad Soyad</label>
+        <input type="text" class="form-control" id="Name" name="Name" placeholder="Adınızı girin" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label">E-posta</label>
+        <input type="email" class="form-control" id="Email" name="Email" placeholder="ornek@mail.com" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="Subject" class="form-label">Konu</label>
+        <select class="form-select" id="Subject" name="Subject" required>
+            <option value="">Bir konu seçin</option>
+            <option value="Genel">Genel</option>
+            <option value="Destek">Destek</option>
+            <option value="Teknik">Teknik</option>
+            <option value="İşbirliği">İşbirliği</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="Message" class="form-label">Mesaj</label>
+        <textarea class="form-control" id="Message" name="Message" rows="4" placeholder="Mesajınızı yazın..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="saveBtn">Kaydet</button>
+</form>

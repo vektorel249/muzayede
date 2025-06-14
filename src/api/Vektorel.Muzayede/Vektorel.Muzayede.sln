@@ -40,7 +40,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E69571A4-5
 		Migration.txt = Migration.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Muzayede.Modules.Domain", "..\modules\Vektorel.Muzayede.Modules.Domain\Vektorel.Muzayede.Modules.Domain.csproj", "{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Muzayede.Modules.Domain", "..\modules\Vektorel.Muzayede.Modules.Domain\Vektorel.Muzayede.Modules.Domain.csproj", "{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muzayede.ContactForm", "Muzayede.ContactForm\Muzayede.ContactForm.csproj", "{EEE88208-D44A-439D-8AC1-22181F031EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vektorel.Muzayede.UITests", "..\..\test\vektorel.Muzayede.UITests\vektorel.Muzayede.UITests.csproj", "{1C500AD3-7A8A-44FD-BA49-AA50AEA33921}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +96,14 @@ Global
 		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE88208-D44A-439D-8AC1-22181F031EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE88208-D44A-439D-8AC1-22181F031EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE88208-D44A-439D-8AC1-22181F031EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE88208-D44A-439D-8AC1-22181F031EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C500AD3-7A8A-44FD-BA49-AA50AEA33921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C500AD3-7A8A-44FD-BA49-AA50AEA33921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C500AD3-7A8A-44FD-BA49-AA50AEA33921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C500AD3-7A8A-44FD-BA49-AA50AEA33921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +123,8 @@ Global
 		{2C070A69-4164-4E24-B6AA-1BE7D8020468} = {3628DB6E-9992-4C15-A1AC-9241F43EE600}
 		{18413A24-AFCD-4771-8EA2-B0707D43E60C} = {F9F9413E-3865-4172-AA21-0FFA53C8C3DC}
 		{2FE5D386-1BDE-49A8-93E2-530B76C6B9BC} = {3628DB6E-9992-4C15-A1AC-9241F43EE600}
+		{EEE88208-D44A-439D-8AC1-22181F031EF9} = {1DE21B10-9866-4521-8492-B7ED30CD1B0C}
+		{1C500AD3-7A8A-44FD-BA49-AA50AEA33921} = {F9F9413E-3865-4172-AA21-0FFA53C8C3DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B16C324-6ECF-4589-AAF4-10535F3C4FC4}
